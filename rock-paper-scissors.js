@@ -5,11 +5,13 @@ function getComputerChoice() {
   const computerArray = ["rock", "paper", "scissors"];
   // Assigns a random number between 0 & 2 to the computer
   const randomNumber = Math.floor(Math.random() * 3);
+  // Assigns that number to a position in the array
   const computerChoice = computerArray[randomNumber];
+  // Returns the computer's choice
   return computerChoice;
 }
 function playRound(playerSelection, computerSelection) {
-  console.log("1", playerSelection, "2", computerSelection);
+  // All possible outcomes for a game of rock paper scissors
   if (playerSelection === "rock" && computerSelection === "paper") {
     computerScore++;
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
@@ -35,13 +37,25 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
+  // Loops 5 times
   for (let i = 0; i < 5; i++) {
+    // Calls the computer choice function and assigns it to a variable
     const computerSelection = getComputerChoice();
     // Asks the player for their rock, paper, scissors choice & removes case sensitivity by converting to lowercase
     const playerSelection = prompt(
       "Please enter either rock, paper or scissors"
     ).toLowerCase();
+    // Plays a round of rock paper scissors
     playRound(playerSelection, computerSelection);
+    // Displays how many wins the player and computer have attained
+    console.log(
+      "The player has won ",
+      playerScore,
+      " game!",
+      " The computer has won ",
+      computerScore,
+      " game!"
+    );
   }
 
   if (playerScore > computerScore) {
@@ -54,10 +68,3 @@ function game() {
 }
 
 console.log(game());
-
-// A game is 5 rounds of RPS
-// Each round the player wins, computer wins or it is a draw as this will be displayed
-// The score will need to be counted
-// If the player has a higher score at the end of the 5 rounds they are the winner
-// If the computer has a higher score at the end of the 5 rounds they are the winner
-// If the score is tied after 5 rounds it is a draw
